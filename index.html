@@ -16,285 +16,66 @@
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/index.css">
 
 </head>
 
 <body>
-  <style>
-    .containeritem {
-      display: flex;
-      flex-wrap: wrap;
-    }
-    .column {
-      flex: 33.33%;
-      padding: 10px;
-    }
-    ul {
-      list-style-type: none;
-    }
-    li {
-      margin: 5px 0;
-    }
-    .metric-box {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 12px;
-      padding: 1.5rem;
-      color: white;
-      text-align: center;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    }
-    .metric-box h3 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .metric-box p {
-      font-size: 0.9rem;
-      opacity: 0.9;
-    }
-    .trajectory-diagram {
-      background: #f8f9fa;
-      border-radius: 12px;
-      padding: 2rem;
-      margin: 1.5rem 0;
-      border: 1px solid #e9ecef;
-    }
-    .recovery-indicator {
-      display: inline-block;
-      padding: 0.25em 0.75em;
-      font-size: 85%;
-      font-weight: 600;
-      border-radius: 0.25rem;
-      margin: 0.25rem;
-    }
-    .recovery-safe {
-      background-color: #d4edda;
-      color: #155724;
-    }
-    .recovery-unsafe {
-      background-color: #f8d7da;
-      color: #721c24;
-    }
-    .recovery-trend {
-      background-color: #cce5ff;
-      color: #004085;
-    }
-    .risk-category-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-    }
-    .risk-category-table th,
-    .risk-category-table td {
-      padding: 0.75rem;
-      text-align: left;
-      border-bottom: 1px solid #dee2e6;
-    }
-    .risk-category-table th {
-      background-color: #f8f9fa;
-      font-weight: 600;
-    }
-    .risk-category-table tr:hover {
-      background-color: #f8f9fa;
-    }
-    .dashboard-selector {
-      padding: 10px 16px;
-      font-size: 14px;
-      font-weight: 500;
-      color: #363636;
-      background: white;
-      border: 2px solid #dbdbdb;
-      border-radius: 8px;
-      cursor: pointer;
-      outline: none;
-      margin-right: 10px;
-      transition: all 0.2s ease;
-    }
-    .dashboard-selector:hover {
-      border-color: #485fc7;
-    }
-    .dashboard-selector:focus {
-      border-color: #485fc7;
-      box-shadow: 0 0 0 0.125em rgba(72, 95, 199, 0.25);
-    }
-    .nav-dropdown-container {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .visualizer-btn {
-      background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-      color: white;
-      border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      text-decoration: none;
-    }
-    .visualizer-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(17, 153, 142, 0.4);
-      color: white;
-    }
-    .visualizer-btn i {
-      font-size: 1.1rem;
-    }
-    .key-finding {
-      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-      border-radius: 12px;
-      padding: 1.5rem;
-      color: white;
-      margin-bottom: 1rem;
-    }
-    .key-finding h4 {
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    .timeline-arrow {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 1rem;
-      background: #f8f9fa;
-      border-radius: 8px;
-      margin: 1rem 0;
-    }
-    .timeline-step {
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 0.85rem;
-    }
-    .step-aligned {
-      background: #d4edda;
-      color: #155724;
-    }
-    .step-misaligned {
-      background: #f8d7da;
-      color: #721c24;
-    }
-    .step-recovery {
-      background: #cce5ff;
-      color: #004085;
-    }
-  </style>
 
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-    <div class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="nav-dropdown-container">
-            <select class="dashboard-selector" onchange="if(this.value) window.location.href=this.value;">
-              <option value="">Navigate to...</option>
-              <option value="https://guardingtheguardrails.com">Guarding the Guardrails Dashboard</option>
-              <option value="https://guardingtheguardrails.com/visualizer">Conversation Visualizer</option>
-              <option value="https://guardingtheguardrails.com/analytics">Analytics Dashboard</option>
-            </select>
-          </div>
-        </div>
+  <!-- HERO SECTION -->
+  <div class="page-section hero-section">
+    <div class="inner-wide" style="text-align: center;">
+      
+      <!-- Dashboard Selector -->
+      <div class="dashboard-selector-container">
+        <select class="dashboard-selector" onchange="if(this.value) window.location.href=this.value;">
+          <option value="" disabled>Select Dashboard</option>
+          <option value="#" selected>Learning from Mistakes</option>
+          <option value="https://guardingtheguardrails.com">Guarding the Guardrails</option>
+        </select>
+      </div>
+      
+      <h1 class="title is-1 publication-title">Learning from Mistakes</h1>
+      <h2 class="title is-4 publication-title">Can LLM Self-recover after Misalignment?</h2>
+      
+      <div class="is-size-5 publication-authors">
+        <span class="author-block">Olga E. Sorokoletova<sup>1</sup>,</span>
+        <span class="author-block">Francesco Giarrusso<sup>1</sup>,</span>
+        <span class="author-block"><a href="https://www.diag.uniroma1.it/users/vincenzo_suriani">Vincenzo Suriani</a><sup>2</sup>,</span>
+        <span class="author-block"><a href="https://www.diag.uniroma1.it/nardi/">Daniele Nardi</a><sup>1</sup></span>
+      </div>
+      <div class="is-size-5 publication-authors" style="margin-top: 0.5rem;">
+        <span class="author-block"><sup>1</sup>Sapienza University of Rome, Department of Computer, Control and Management Engineering, Italy</span>
+      </div>
+
+      <div style="margin-top: 1.5rem;">
+        <a href="https://guardingtheguardrails.com/visualizer" class="visualizer-btn" target="_blank">
+          <i class="fas fa-comments"></i>
+          <span>Visualize the Conversations</span>
+        </a>
+      </div>
+
+      <div class="buttons-row">
+        <a href="#abstract" class="nav-btn"><i class="fas fa-file-alt"></i> Abstract</a>
+        <a href="#methodology" class="nav-btn"><i class="fas fa-cogs"></i> Methodology</a>
+        <a href="#analysis" class="nav-btn"><i class="fas fa-chart-bar"></i> Analysis</a>
+        <a href="#findings" class="nav-btn"><i class="fas fa-lightbulb"></i> Key Findings</a>
       </div>
     </div>
-  </nav>
+  </div>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Learning from Mistakes</h1>
-            <h2 class="title is-4 publication-title">Can LLM Self-recover after Misalignment?</h2>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                Olga E. Sorokoletova<sup>1</sup>,</span>
-              <span class="author-block">
-                Francesco Giarrusso<sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.diag.uniroma1.it/users/vincenzo_suriani">Vincenzo Suriani</a><sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.diag.uniroma1.it/nardi/">Daniele Nardi</a><sup>1</sup>
-              </span>
-            </div>
-            <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Sapienza University of Rome, Department of Computer, Control and Management Engineering, Italy</span>
-             
-            </div>
-
-            <div class="column has-text-centered">
-              <span class="link-block">
-                <a href="https://guardingtheguardrails.com/visualizer" class="visualizer-btn" target="_blank">
-                  <i class="fas fa-comments"></i>
-                  <span>Visualize the Conversations</span>
-                </a>
-              </span>
-            </div>
-
-            <div class="column has-text-centered" style="margin-top: 1rem;">
-              <span class="link-block">
-                <a href="#abstract" class="external-link button is-normal">
-                  <span class="icon">
-                    <i class="fas fa-file-alt"></i>
-                  </span>
-                  <span>Abstract</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#methodology" class="external-link button is-normal">
-                  <span class="icon">
-                    <i class="fas fa-cogs"></i>
-                  </span>
-                  <span>Methodology</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#analysis" class="external-link button is-normal">
-                  <span class="icon">
-                    <i class="fas fa-chart-bar"></i>
-                  </span>
-                  <span>Analysis</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#findings" class="external-link button is-normal">
-                  <span class="icon">
-                    <i class="fas fa-lightbulb"></i>
-                  </span>
-                  <span>Key Findings</span>
-                </a>
-              </span>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="abstract">
-    <div class="container is-max-desktop has-text-centered">
-      <h2 class="title is-3">Abstract</h2>
-      <div style="text-align: justify; margin: 0 auto; max-width: 80%;">
+  <!-- ABSTRACT -->
+  <div class="page-section" id="abstract">
+    <div class="inner-narrow">
+      <h2 class="title is-3" style="text-align: center;">Abstract</h2>
+      <div style="text-align: justify;">
         <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
           Responsible AI initiatives place great emphasis on the safety of Large Language Model (LLM)-based systems. In particular, it has become standard practice to subject these models to an alignment procedure aimed at preventing harmful outputs. However, once aligned, a model is not guaranteed to maintain this alignment throughout its lifecycle. Moreover, the likelihood of misalignment increases as malicious actors may deliberately employ jailbreaking techniques to compromise LLM safety.
         </p>
@@ -306,65 +87,33 @@
         </p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="motivation">
-    <div class="container is-max-desktop content">
+  <!-- MOTIVATION -->
+  <div class="page-section" id="motivation" style="background: #fafafa;">
+    <div class="inner-wide">
       <h2 class="title is-3">Motivation</h2>
-      <div class="columns is-centered">
-        <div class="column is-10">
-          <div class="notification is-light" style="background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);">
-            <p style="font-size: 1.05rem;">
-              <strong>The Problem:</strong> Many researchers agree that no system can be considered perfectly aligned and that any model's safety can eventually be compromised. This issue becomes even more critical when malicious actors deliberately attempt to compromise a model's safety through adversarial means, such as employing jailbreaking techniques.
-            </p>
-          </div>
-          <div class="notification is-light" style="background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);">
-            <p style="font-size: 1.05rem;">
-              <strong>Our Approach:</strong> Unlike previous works that focus on developing more robust alignment methods, our study takes a different perspective. Instead of striving to design systems that never drift into misalignment, we explore how to build <em>self-recoverable LLMs</em>—models capable of finding the "road home," that is, of restoring their alignment without external intervention.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="dataset">
-    <div class="container is-max-desktop content">
-      <h2 class="title is-3">Dataset</h2>
-      <div style="text-align: justify; margin: 0 auto; max-width: 90%;">
-        <p>
-          We conducted a <strong>red teaming challenge</strong> involving 48 master's students enrolled in the Seminars in Artificial Intelligence and Robotics course to collect a dataset of adversarial dialogues.
+      <div class="info-box problem">
+        <p style="font-size: 1.05rem;">
+          <strong>The Problem:</strong> Many researchers agree that no system can be considered perfectly aligned and that any model's safety can eventually be compromised. This issue becomes even more critical when malicious actors deliberately attempt to compromise a model's safety through adversarial means, such as employing jailbreaking techniques.
         </p>
       </div>
-      
-      <div class="columns is-centered" style="margin-top: 2rem;">
-        <div class="column is-3">
-          <div class="metric-box">
-            <h3>597</h3>
-            <p>Selected Conversations</p>
-          </div>
-        </div>
-        <div class="column is-3">
-          <div class="metric-box" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-            <h3>48</h3>
-            <p>Participants</p>
-          </div>
-        </div>
-        <div class="column is-3">
-          <div class="metric-box" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-            <h3>77.08%</h3>
-            <p>Evaluator Agreement</p>
-          </div>
-        </div>
-        <div class="column is-3">
-          <div class="metric-box" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
-            <h3>2h</h3>
-            <p>Challenge Duration</p>
-          </div>
-        </div>
+      <div class="info-box approach">
+        <p style="font-size: 1.05rem;">
+          <strong>Our Approach:</strong> Unlike previous works that focus on developing more robust alignment methods, our study takes a different perspective. Instead of striving to design systems that never drift into misalignment, we explore how to build <em>self-recoverable LLMs</em>, models capable of finding the "road home," that is, of restoring their alignment without external intervention.
+        </p>
       </div>
+    </div>
+  </div>
 
-      <div style="text-align: justify; margin: 2rem auto 0; max-width: 90%;">
+  <!-- DATASET -->
+  <div class="page-section" id="dataset">
+    <div class="inner-wide">
+      <h2 class="title is-3">Dataset</h2>
+      <p style="text-align: justify;">
+        We conducted a <strong>red teaming challenge</strong> in which each participant had a two-hour session to perform multi-turn adversarial attacks. The target model was Minerva-7B-instruct-v1.0,  an instruction-tuned LLM pretrained on Italian and English corpora. Minerva is a family of LLMs developed by Sapienza NLP in the context of the Future Artificial Intelligence Research (FAIR) project, in collaboration with CINECA. After that the dataset of adversarial dialogues was collected.
+
+      <div style="text-align: justify; margin-top: 2rem;">
         <p>
           The challenge included multiple jailbreaking tasks. Since not all tasks were compatible with the safety risk taxonomy used by Llama Guard (inherited from the MLCommons taxonomy), we selected 597 conversations out of a total of 1364. These selected dialogues correspond to tasks involving:
         </p>
@@ -375,18 +124,19 @@
           <li>Induction of hallucinations</li>
         </ul>
         <p style="margin-top: 1rem;">
-          The model used was <strong>Minerva-7B-instruct-v1.0</strong>, a model trained on nearly 2.5 trillion tokens. The challenge was primarily conducted in Italian, except when a specific jailbreaking technique was language-dependent.
+        The challenge was conducted primarily in Italian, with a minority of prompts in English, except in cases where a specific jailbreaking technique was language-dependent.
         </p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="methodology">
-    <div class="container is-max-desktop content">
+  <!-- METHODOLOGY -->
+  <div class="page-section" id="methodology" style="background: #fafafa;">
+    <div class="inner-wide">
       <h2 class="title is-3">Methodology</h2>
       
       <h3 class="title is-4" style="margin-top: 2rem;">Safety Trajectories</h3>
-      <div style="text-align: justify; margin: 0 auto; max-width: 90%;">
+      <div style="text-align: justify;">
         <p>
           Analyzing the temporal safety dynamics of user–LLM interactions can help to better explain incremental jailbreaks and to understand how models recover after different types of safety failures. By examining the evolution of safety states throughout a dialogue, we can trace the path from alignment to misalignment and, in some cases, to self-recovery.
         </p>
@@ -396,41 +146,39 @@
       </div>
 
       <div class="trajectory-diagram">
-        <h4 class="title is-5 has-text-centered">Safety Trajectory Interpretation</h4>
-        <div class="columns is-centered" style="margin-top: 1rem;">
-          <div class="column is-6">
-            <table class="risk-category-table">
-              <thead>
-                <tr>
-                  <th>Pattern</th>
-                  <th>Interpretation</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="recovery-indicator recovery-safe">→ at y=0</span></td>
-                  <td>Benign exchange (safe prompt, safe response)</td>
-                </tr>
-                <tr>
-                  <td><span class="recovery-indicator recovery-unsafe">→ at y=1</span></td>
-                  <td>Successful attack (unsafe prompt, unsafe response)</td>
-                </tr>
-                <tr>
-                  <td><span class="recovery-indicator recovery-trend">↗ ascending</span></td>
-                  <td>Broken alignment (safe prompt, unsafe response)</td>
-                </tr>
-                <tr>
-                  <td><span class="recovery-indicator recovery-trend">↘ descending</span></td>
-                  <td>Resistance to attack (unsafe prompt, safe response)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <h4 class="title is-5" style="text-align: center;">Safety Trajectory Interpretation</h4>
+        <div class="table-wrapper">
+          <table class="data-table" style="max-width: 700px; margin: 1rem auto;">
+            <thead>
+              <tr>
+                <th>Pattern</th>
+                <th>Interpretation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="recovery-indicator recovery-safe">→ at y=0</span></td>
+                <td>Benign exchange (safe prompt, safe response)</td>
+              </tr>
+              <tr>
+                <td><span class="recovery-indicator recovery-unsafe">→ at y=1</span></td>
+                <td>Successful attack (unsafe prompt, unsafe response)</td>
+              </tr>
+              <tr>
+                <td><span class="recovery-indicator recovery-trend">↗ ascending</span></td>
+                <td>Broken alignment (safe prompt, unsafe response)</td>
+              </tr>
+              <tr>
+                <td><span class="recovery-indicator recovery-trend">↘ descending</span></td>
+                <td>Resistance to attack (unsafe prompt, safe response)</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
 
       <h3 class="title is-4" style="margin-top: 2rem;">Recovery Trends</h3>
-      <div style="text-align: justify; margin: 0 auto; max-width: 90%;">
+      <div style="text-align: justify;">
         <p>
           To define recovery on a safety trajectory, we first fix the turn at which an unsafe model response occurs. <strong>Recovery</strong> is then observed when the model produces the first safe response after this misalignment event.
         </p>
@@ -443,97 +191,88 @@
           <span class="timeline-step step-recovery">Recovery (Turn i+N)</span>
         </div>
 
-        <p style="margin-top: 1rem;">
-          We distinguish between two types of recovery:
-        </p>
+        <p style="margin-top: 1rem;">We distinguish between two types of recovery:</p>
         <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 0.5rem;">
           <li><strong>Absolute recovery:</strong> Restoration of alignment that is maintained until the end of the interaction</li>
           <li><strong>Temporary recovery:</strong> The model returns to alignment but later drifts into misalignment again</li>
         </ul>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="analysis">
-    <div class="container is-max-desktop content">
+  <!-- ANALYSIS -->
+  <div class="page-section" id="analysis">
+    <div class="inner-wide">
       <h2 class="title is-3">Analysis</h2>
       
       <h3 class="title is-4" style="margin-top: 2rem;">Alignment Statistics</h3>
-      <div style="text-align: justify; margin: 0 auto; max-width: 90%;">
-        <p>
-          The analysis was conducted using Llama Guard 3-1B as the baseline content moderation model, which shows 77.08% agreement with ground truth manual safety evaluation. We also compared results with Llama Guard 3-8B.
-        </p>
-      </div>
+      <p style="text-align: justify;">
+        The analysis was conducted using Llama Guard 3-1B as the baseline content moderation model, which shows 77.08% agreement with ground truth manual safety evaluation. We also compared results with Llama Guard 3-8B.
+      </p>
 
-      <div class="columns is-centered" style="margin-top: 1.5rem;">
-        <div class="column is-10">
-          <table class="risk-category-table">
-            <thead>
-              <tr>
-                <th>Guard Model</th>
-                <th>Unsafe Conversations</th>
-                <th>Conversations w/ Recoveries</th>
-                <th>Multiple Recoveries</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Llama Guard 3-1B</strong></td>
-                <td>202 (33.8%)</td>
-                <td>87 (14.6%)</td>
-                <td>19 (3.2%)</td>
-              </tr>
-              <tr>
-                <td><strong>Llama Guard 3-8B</strong></td>
-                <td>193 (32.3%)</td>
-                <td>65 (10.9%)</td>
-                <td>5 (0.8%)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Guard Model</th>
+              <th>Unsafe Conversations</th>
+              <th>Conversations w/ Recoveries</th>
+              <th>Multiple Recoveries</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Llama Guard 3-1B</strong></td>
+              <td>202 (33.8%)</td>
+              <td>87 (14.6%)</td>
+              <td>19 (3.2%)</td>
+            </tr>
+            <tr>
+              <td><strong>Llama Guard 3-8B</strong></td>
+              <td>193 (32.3%)</td>
+              <td>65 (10.9%)</td>
+              <td>5 (0.8%)</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
       <h3 class="title is-4" style="margin-top: 2rem;">Recovery Dynamics</h3>
-      <div class="columns is-centered" style="margin-top: 1.5rem;">
-        <div class="column is-10">
-          <table class="risk-category-table">
-            <thead>
-              <tr>
-                <th>Guard Model</th>
-                <th>Avg. Turns</th>
-                <th>Avg. Recoveries</th>
-                <th>Avg. Turns b. Recovery</th>
-                <th>Avg. Misalignment Length</th>
-                <th>Avg. Recovery Duration</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Llama Guard 3-1B</strong></td>
-                <td>9.8</td>
-                <td>1.4</td>
-                <td>4.3</td>
-                <td>1.63</td>
-                <td>3.69</td>
-              </tr>
-              <tr>
-                <td><strong>Llama Guard 3-8B</strong></td>
-                <td>8.4</td>
-                <td>1.1</td>
-                <td>5.4</td>
-                <td>2.13</td>
-                <td>2.34</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Guard Model</th>
+              <th>Avg. Turns</th>
+              <th>Avg. Recoveries</th>
+              <th>Avg. Turns b. Recovery</th>
+              <th>Avg. Misalignment Length</th>
+              <th>Avg. Recovery Duration</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Llama Guard 3-1B</strong></td>
+              <td>9.8</td>
+              <td>1.4</td>
+              <td>4.3</td>
+              <td>1.63</td>
+              <td>3.69</td>
+            </tr>
+            <tr>
+              <td><strong>Llama Guard 3-8B</strong></td>
+              <td>8.4</td>
+              <td>1.1</td>
+              <td>5.4</td>
+              <td>2.13</td>
+              <td>2.34</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div style="text-align: justify; margin: 2rem auto 0; max-width: 90%;">
-        <p>
-          Two metrics are particularly informative for characterizing alignment dynamics:
-        </p>
+      <div style="text-align: justify; margin-top: 2rem;">
+        <p>Two metrics are particularly informative for characterizing alignment dynamics:</p>
         <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 0.5rem;">
           <li><strong>Misalignment Length:</strong> Captures how many turns the model remains misaligned before recovery occurs. Systems more resistant to jailbreaking should minimize this value.</li>
           <li><strong>Recovery Duration:</strong> Describes how long the model stays aligned after returning to a safe state while the attack continues. Higher values indicate greater robustness to sustained adversarial pressure.</li>
@@ -541,130 +280,115 @@
       </div>
 
       <h3 class="title is-4" style="margin-top: 2rem;">Risk-Specific Effects</h3>
-      <div class="columns is-centered" style="margin-top: 1.5rem;">
-        <div class="column is-12">
-          <div style="overflow-x: auto;">
-            <table class="risk-category-table">
-              <thead>
-                <tr>
-                  <th>Hazard Category</th>
-                  <th colspan="2">Conversations</th>
-                  <th colspan="2">Recoveries</th>
-                  <th colspan="2">Avg. Misalignment Length</th>
-                  <th colspan="2">Avg. Recovery Duration</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th>LG 3-1B</th>
-                  <th>LG 3-8B</th>
-                  <th>LG 3-1B</th>
-                  <th>LG 3-8B</th>
-                  <th>LG 3-1B</th>
-                  <th>LG 3-8B</th>
-                  <th>LG 3-1B</th>
-                  <th>LG 3-8B</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><strong>Violent Crimes</strong></td>
-                  <td>63</td><td>36</td>
-                  <td>25</td><td>9</td>
-                  <td>1.64</td><td>1.78</td>
-                  <td>3.05</td><td>2.50</td>
-                </tr>
-                <tr>
-                  <td><strong>Hate</strong></td>
-                  <td>60</td><td>71</td>
-                  <td>28</td><td>26</td>
-                  <td>1.36</td><td>2.62</td>
-                  <td>5.47</td><td>2.28</td>
-                </tr>
-                <tr>
-                  <td><strong>Non-Violent Crimes</strong></td>
-                  <td>28</td><td>20</td>
-                  <td>6</td><td>5</td>
-                  <td>2.17</td><td>1.80</td>
-                  <td>2.00</td><td>2.67</td>
-                </tr>
-                <tr>
-                  <td><strong>Indiscriminate Weapons</strong></td>
-                  <td>20</td><td>31</td>
-                  <td>3</td><td>8</td>
-                  <td>1.67</td><td>2.25</td>
-                  <td>2.50</td><td>2.20</td>
-                </tr>
-                <tr>
-                  <td><strong>Privacy</strong></td>
-                  <td>22</td><td>20</td>
-                  <td>13</td><td>10</td>
-                  <td>2.23</td><td>2.30</td>
-                  <td>3.67</td><td>1.17</td>
-                </tr>
-                <tr>
-                  <td><strong>Intellectual Property</strong></td>
-                  <td>16</td><td>2</td>
-                  <td>11</td><td>3</td>
-                  <td>1.82</td><td>2.00</td>
-                  <td>4.29</td><td>4.00</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Hazard Category</th>
+              <th colspan="2" style="text-align: center;">Conversations</th>
+              <th colspan="2" style="text-align: center;">Recoveries</th>
+              <th colspan="2" style="text-align: center;">Avg. Misalignment Length</th>
+              <th colspan="2" style="text-align: center;">Avg. Recovery Duration</th>
+            </tr>
+            <tr>
+              <th></th>
+              <th>LG 3-1B</th>
+              <th>LG 3-8B</th>
+              <th>LG 3-1B</th>
+              <th>LG 3-8B</th>
+              <th>LG 3-1B</th>
+              <th>LG 3-8B</th>
+              <th>LG 3-1B</th>
+              <th>LG 3-8B</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Violent Crimes</strong></td>
+              <td>63</td><td>36</td>
+              <td>25</td><td>9</td>
+              <td>1.64</td><td>1.78</td>
+              <td>3.05</td><td>2.50</td>
+            </tr>
+            <tr>
+              <td><strong>Hate</strong></td>
+              <td>60</td><td>71</td>
+              <td>28</td><td>26</td>
+              <td>1.36</td><td>2.62</td>
+              <td>5.47</td><td>2.28</td>
+            </tr>
+            <tr>
+              <td><strong>Non-Violent Crimes</strong></td>
+              <td>28</td><td>20</td>
+              <td>6</td><td>5</td>
+              <td>2.17</td><td>1.80</td>
+              <td>2.00</td><td>2.67</td>
+            </tr>
+            <tr>
+              <td><strong>Indiscriminate Weapons</strong></td>
+              <td>20</td><td>31</td>
+              <td>3</td><td>8</td>
+              <td>1.67</td><td>2.25</td>
+              <td>2.50</td><td>2.20</td>
+            </tr>
+            <tr>
+              <td><strong>Privacy</strong></td>
+              <td>22</td><td>20</td>
+              <td>13</td><td>10</td>
+              <td>2.23</td><td>2.30</td>
+              <td>3.67</td><td>1.17</td>
+            </tr>
+            <tr>
+              <td><strong>Intellectual Property</strong></td>
+              <td>16</td><td>2</td>
+              <td>11</td><td>3</td>
+              <td>1.82</td><td>2.00</td>
+              <td>4.29</td><td>4.00</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="findings">
-    <div class="container is-max-desktop content">
+  <!-- KEY FINDINGS -->
+  <div class="page-section" id="findings" style="background: #fafafa;">
+    <div class="inner-wide">
       <h2 class="title is-3">Key Findings</h2>
       
-      <div class="columns is-centered">
-        <div class="column is-6">
-          <div class="key-finding">
-            <h4><i class="fas fa-check-circle"></i> Most Recoverable Categories</h4>
-            <p>"Violent Crimes" and "Intellectual Property" tend to be the most recoverable categories, showing shorter misalignment lengths and longer recovery durations.</p>
-          </div>
+      <div class="findings-grid">
+        <div class="key-finding finding-success">
+          <h4><i class="fas fa-check-circle"></i> Most Recoverable Categories</h4>
+          <p>"Violent Crimes" and "Intellectual Property" tend to be the most recoverable categories, showing shorter misalignment lengths and longer recovery durations.</p>
         </div>
-        <div class="column is-6">
-          <div class="key-finding" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-            <h4><i class="fas fa-exclamation-triangle"></i> Most Difficult to Recover</h4>
-            <p>"Indiscriminate Weapons" and "Privacy" are the most difficult categories to recover from, indicating weaker self-correction capabilities in these areas.</p>
-          </div>
+        <div class="key-finding finding-warning">
+          <h4><i class="fas fa-exclamation-triangle"></i> Most Difficult to Recover</h4>
+          <p>"Indiscriminate Weapons" and "Privacy" are the most difficult categories to recover from, indicating weaker self-correction capabilities in these areas.</p>
         </div>
-      </div>
-
-      <div class="columns is-centered">
-        <div class="column is-6">
-          <div class="key-finding" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
-            <h4><i class="fas fa-chart-line"></i> Recovery Patterns</h4>
-            <p>Misalignment episodes last on average about 2 turns, and recovery typically persists for about 3-4 turns before potential renewed misalignment.</p>
-          </div>
+        <div class="key-finding finding-info">
+          <h4><i class="fas fa-chart-line"></i> Recovery Patterns</h4>
+          <p>Misalignment episodes last on average about 2 turns, and recovery typically persists for about 3-4 turns before potential renewed misalignment.</p>
         </div>
-        <div class="column is-6">
-          <div class="key-finding" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-            <h4><i class="fas fa-balance-scale"></i> Model Size Impact</h4>
-            <p>The larger 8B model shows higher misalignment length and shorter recovery duration compared to the 1B model, suggesting model size doesn't guarantee better recovery.</p>
-          </div>
+        <div class="key-finding finding-neutral">
+          <h4><i class="fas fa-balance-scale"></i>Sensitivity of the evaluation model</h4>
+          <p>The larger 8B model shows higher misalignment length and shorter recovery duration compared to the 1B model</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="section" id="conclusion">
-    <div class="container is-max-desktop content">
+  <!-- CONCLUSION -->
+  <div class="page-section" id="conclusion">
+    <div class="inner-narrow">
       <h2 class="title is-3">Conclusion & Future Work</h2>
-      <div style="text-align: justify; margin: 0 auto; max-width: 90%;">
+      <div style="text-align: justify;">
         <p>
           This work aims to open a discussion on alignment from a new perspective. Instead of focusing solely on making models well-aligned, we suggest examining the potential for <strong>self-recovery in imperfectly aligned systems</strong>.
         </p>
         <p style="margin-top: 1rem;">
           The presented results are preliminary and depend on the specific setup of our challenge, including the choice of the attacked model, the target tasks, and their correspondence to the taxonomy used in safety evaluation.
         </p>
-        <p style="margin-top: 1rem;">
-          <strong>Future directions include:</strong>
-        </p>
+        <p style="margin-top: 1rem;"><strong>Future directions include:</strong></p>
         <ul style="list-style-type: disc; padding-left: 2rem; margin-top: 0.5rem;">
           <li>Exploring how to increase Recovery Duration and decrease Misalignment Length</li>
           <li>Enhancing the stability of alignment once regained</li>
@@ -673,63 +397,20 @@
         </ul>
       </div>
 
-      <div class="has-text-centered" style="margin-top: 2rem;">
+      <div style="text-align: center; margin-top: 2rem;">
         <a href="https://guardingtheguardrails.com/visualizer" class="visualizer-btn" target="_blank">
           <i class="fas fa-comments"></i>
           <span>Explore the Conversation Data</span>
         </a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="content has-text-centered">
-        <p>
-          <strong>Learning from Mistakes: Can LLM Self-recover after Misalignment?</strong>
-        </p>
-        <p>
-          Sapienza University of Rome &amp; University of Basilicata
-        </p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Collapsible functionality for any collapsible elements
-    document.querySelectorAll('.collapsible-prompt button').forEach(button => {
-      button.addEventListener('click', function() {
-        const content = this.nextElementSibling;
-        const icon = this.querySelector('.icon i');
-        if (content.style.display === 'none' || content.style.display === '') {
-          content.style.display = 'block';
-          icon.classList.remove('fa-chevron-down');
-          icon.classList.add('fa-chevron-up');
-        } else {
-          content.style.display = 'none';
-          icon.classList.remove('fa-chevron-up');
-          icon.classList.add('fa-chevron-down');
-        }
-      });
-    });
-
-    // Mobile navbar burger menu
-    document.addEventListener('DOMContentLoaded', () => {
-      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-      if ($navbarBurgers.length > 0) {
-        $navbarBurgers.forEach(el => {
-          el.addEventListener('click', () => {
-            const target = el.dataset.target;
-            const $target = document.getElementById(target);
-            el.classList.toggle('is-active');
-            if ($target) {
-              $target.classList.toggle('is-active');
-            }
-          });
-        });
-      }
-    });
-  </script>
+  <!-- FOOTER -->
+  <div class="page-footer">
+    <p><strong>Learning from Mistakes: Can LLM Self-recover after Misalignment?</strong></p>
+    <p>Sapienza University of Rome 
+  </div>
 
 </body>
 </html>
