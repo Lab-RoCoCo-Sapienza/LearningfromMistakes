@@ -46,8 +46,8 @@
       <h2 class="title is-4 publication-title">Can LLM Self-recover after Misalignment?</h2>
       
       <div class="is-size-5 publication-authors">
-        <span class="author-block">Olga E. Sorokoletova<sup>*</sup>,</span>
-        <span class="author-block">Francesco Giarrusso<sup>*</sup>,</span>
+        <span class="author-block"><a href="https://www.linkedin.com/in/olgasorokoletova/">Olga E. Sorokoletova</a><sup>*</sup>,</span>
+        <span class="author-block"><a href="https://www.linkedin.com/in/francesco-giarrusso-735759161/">Francesco Giarrusso</a><sup>*</sup>,</span>
         <span class="author-block"><a href="https://www.diag.uniroma1.it/users/vincenzo_suriani">Vincenzo Suriani</a><sup>*</sup>,</span>
         <span class="author-block"><a href="https://www.diag.uniroma1.it/nardi/">Daniele Nardi</a><sup>*</sup></span>
       </div>
@@ -261,10 +261,10 @@
             </tr>
             <tr>
               <td><strong>Llama Guard 3-8B</strong></td>
-              <td>8.4</td>
+              <td>8.3</td>
               <td>1.1</td>
               <td>5.4</td>
-              <td>2.13</td>
+              <td>2.14</td>
               <td>2.34</td>
             </tr>
           </tbody>
@@ -281,71 +281,71 @@
 
       <h3 class="title is-4" style="margin-top: 2rem;">Risk-Specific Effects</h3>
       <div class="table-wrapper">
-        <table class="data-table">
-          <thead>
+      <table class="data-table">
+            <thead>
             <tr>
-              <th>Hazard Category</th>
-              <th colspan="2" style="text-align: center;">Conversations</th>
-              <th colspan="2" style="text-align: center;">Recoveries</th>
-              <th colspan="2" style="text-align: center;">Avg. Misalignment Length</th>
-              <th colspan="2" style="text-align: center;">Avg. Recovery Duration</th>
+                <th>Hazard Category</th>
+                <th colspan="2" style="text-align: center;">Conversations</th>
+                <th colspan="2" style="text-align: center;">Recoveries</th>
+                <th colspan="2" style="text-align: center;">Avg. Misalignment Length</th>
+                <th colspan="2" style="text-align: center;">Avg. Recovery Duration</th>
             </tr>
             <tr>
-              <th></th>
-              <th>LG 3-1B</th>
-              <th>LG 3-8B</th>
-              <th>LG 3-1B</th>
-              <th>LG 3-8B</th>
-              <th>LG 3-1B</th>
-              <th>LG 3-8B</th>
-              <th>LG 3-1B</th>
-              <th>LG 3-8B</th>
+                <th></th>
+                <th>LG 3-1B</th>
+                <th>LG 3-8B</th>
+                <th>LG 3-1B</th>
+                <th>LG 3-8B</th>
+                <th>LG 3-1B</th>
+                <th>LG 3-8B</th>
+                <th>LG 3-1B</th>
+                <th>LG 3-8B</th>
             </tr>
-          </thead>
-          <tbody>
+            </thead>
+            <tbody>
             <tr>
-              <td><strong>Violent Crimes</strong></td>
-              <td>63</td><td>36</td>
-              <td>25</td><td>9</td>
-              <td>1.64</td><td>1.78</td>
-              <td>3.05</td><td>2.50</td>
-            </tr>
-            <tr>
-              <td><strong>Hate</strong></td>
-              <td>60</td><td>71</td>
-              <td>28</td><td>26</td>
-              <td>1.36</td><td>2.62</td>
-              <td>5.47</td><td>2.28</td>
+                <td><strong>Violent Crimes</strong></td>
+                <td>63</td><td>36</td>
+                <td>28</td><td>9</td>
+                <td>1.82</td><td>1.78</td>
+                <td>2.61</td><td>2.50</td>
             </tr>
             <tr>
-              <td><strong>Non-Violent Crimes</strong></td>
-              <td>28</td><td>20</td>
-              <td>6</td><td>5</td>
-              <td>2.17</td><td>1.80</td>
-              <td>2.00</td><td>2.67</td>
+                <td><strong>Hate</strong></td>
+                <td>60</td><td>71</td>
+                <td>28</td><td>27</td>
+                <td>1.25</td><td>2.63</td>
+                <td>5.81</td><td>2.28</td>
             </tr>
             <tr>
-              <td><strong>Indiscriminate Weapons</strong></td>
-              <td>20</td><td>31</td>
-              <td>3</td><td>8</td>
-              <td>1.67</td><td>2.25</td>
-              <td>2.50</td><td>2.20</td>
+                <td><strong>Non-Violent Crimes</strong></td>
+                <td>28</td><td>20</td>
+                <td>9</td><td>5</td>
+                <td>1.33</td><td>1.80</td>
+                <td>2.17</td><td>2.67</td>
             </tr>
             <tr>
-              <td><strong>Privacy</strong></td>
-              <td>22</td><td>20</td>
-              <td>13</td><td>10</td>
-              <td>2.23</td><td>2.30</td>
-              <td>3.67</td><td>1.17</td>
+                <td><strong>Indiscriminate Weapons</strong></td>
+                <td>20</td><td>31</td>
+                <td>6</td><td>8</td>
+                <td>2.83</td><td>2.25</td>
+                <td>2.25</td><td>2.20</td>
             </tr>
             <tr>
-              <td><strong>Intellectual Property</strong></td>
-              <td>16</td><td>2</td>
-              <td>11</td><td>3</td>
-              <td>1.82</td><td>2.00</td>
-              <td>4.29</td><td>4.00</td>
+                <td><strong>Privacy</strong></td>
+                <td>22</td><td>20</td>
+                <td>14</td><td>10</td>
+                <td>2.00</td><td>2.30</td>
+                <td>3.83</td><td>1.17</td>
             </tr>
-          </tbody>
+            <tr>
+                <td><strong>Intellectual Property</strong></td>
+                <td>16</td><td>2</td>
+                <td>15</td><td>3</td>
+                <td>1.80</td><td>2.00</td>
+                <td>3.69</td><td>4.00</td>
+            </tr>
+            </tbody>
         </table>
       </div>
     </div>
