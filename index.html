@@ -33,12 +33,13 @@
   <div class="page-section hero-section">
     <div class="inner-wide" style="text-align: center;">
       
+
       <!-- Dashboard Selector -->
       <div class="dashboard-selector-container">
         <select class="dashboard-selector" onchange="if(this.value) window.location.href=this.value;">
           <option value="" disabled>Select Dashboard</option>
           <option value="" selected>Learning from Mistakes</option>
-          <option value="#">Guarding the Guardrails</option>
+          <option value="https://lab-rococo-sapienza.github.io/Guarding/">Guarding the Guardrails</option>
         </select>
       </div>
       
@@ -56,7 +57,7 @@
       </div>
 
       <div style="margin-top: 1.5rem;">
-        <a href="https://guardingtheguardrails.com/visualizer" class="visualizer-btn" target="_blank">
+        <a href="https://guardingtheguardrails.com/earning-from-visualizer" class="visualizer-btn" target="_blank">
           <i class="fas fa-comments"></i>
           <span>Visualize the Conversations</span>
         </a>
@@ -145,6 +146,14 @@
         </p>
       </div>
 
+      <!-- Figure 1 -->
+      <figure class="figure-container">
+        <img src="./static/images/figure1.jpeg" alt="Safety trajectory visualization showing misalignment and recovery patterns across dialogue turns">
+        <figcaption>
+          <strong>Figure 1:</strong> Safety trajectory for one of the conversations of the collected dataset. The first misalignment occurs at turn 0, followed by recovery at turn 4. The second misalignment occurs at turn 5, with recovery at turn 6. Misalignment-recovery pairs are identified by transitions from unsafe model responses (flagged as 1) to the first subsequent safe response (flagged as 0).
+        </figcaption>
+      </figure>
+
       <div class="trajectory-diagram">
         <h4 class="title is-5" style="text-align: center;">Safety Trajectory Interpretation</h4>
         <div class="table-wrapper">
@@ -197,6 +206,14 @@
           <li><strong>Temporary recovery:</strong> The model returns to alignment but later drifts into misalignment again</li>
         </ul>
       </div>
+
+      <!-- Figure 2 -->
+      <figure class="figure-container">
+        <img src="./static/images/figure2.png" alt="Schematic illustration of one-step recovery showing two possible recovery paths">
+        <figcaption>
+          <strong>Figure 2:</strong> Schematic illustration of one-step recovery. The two possible recovery paths are shown, depending on whether the user prompt at turn i + 1 is safe (lower recovery path) or unsafe (upper recovery path).
+        </figcaption>
+      </figure>
     </div>
   </div>
 
@@ -398,7 +415,7 @@
       </div>
 
       <div style="text-align: center; margin-top: 2rem;">
-        <a href="https://guardingtheguardrails.com/visualizer" class="visualizer-btn" target="_blank">
+        <a href="https://guardingtheguardrails.com/learning-from-visualizer" class="visualizer-btn" target="_blank">
           <i class="fas fa-comments"></i>
           <span>Explore the Conversation Data</span>
         </a>
@@ -414,3 +431,4 @@
 
 </body>
 </html>
+

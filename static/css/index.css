@@ -1,4 +1,3 @@
-
 body {
   font-family: 'Noto Sans', sans-serif;
 }
@@ -315,4 +314,30 @@ body {
 .table-wrapper {
   overflow-x: auto;
   margin: 1.5rem 0;
+}
+
+/* Figure container - minimal addition for images */
+.figure-container {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border: 1px solid #e9ecef;
+}
+
+.figure-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+.figure-container figcaption {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify;
 }
